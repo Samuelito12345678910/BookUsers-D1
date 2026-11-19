@@ -1,7 +1,10 @@
 package Clases;
 
-public class Usuario {
+import java.util.ArrayList;
 
+public class Usuario {
+    public static ArrayList<Usuario> listaUsuarios = new ArrayList<>();
+    private static int contadorId = 1;
     private int id;
     private String tipoIdentificacion;
     private String numeroIdentificacion;
