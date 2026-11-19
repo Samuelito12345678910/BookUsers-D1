@@ -16,6 +16,15 @@ public class FormMenu  extends JFrame{
         public FormMenu() {
             listaUsuarios = new ArrayList<>();
             setTitle("BookUsers-SuarezJostin y JuanPacheco");
+            setContentPane(panelPrincipal);
+            setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            setSize(500, 300);
+            setLocationRelativeTo(null);
+            btnRegistrar.addActionListener(e-> new FormRegistro(listaUsuarios, this).setVisible(true));
+            btnLIstado.addActionListener(e -> new FormListado(listaUsuarios).setVisible(true));
+            btnCreditos.addActionListener(e -> new FormCreditos().setVisible(true));
         }
+        public int generarSiguienteId() {return contador++; }
+        public static void main(String[] args) {SwingUtilities.invokeLater(()-> new FormMenu().setVisible(true));}
     }
 
