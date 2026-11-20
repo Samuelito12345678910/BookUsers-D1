@@ -6,29 +6,19 @@ import java.io.File;
 
 
 public class CrearUsuario extends JFrame{
+    private JPanel panelPrincipal;
+    private JComboBox<String> cmbTipoDoc;
+    private JTextField txtNumDoc;
+    private JTextField txtNombre1;
+    private JTextField txtNombre2;
+    private JTextField txtApellido1;
+    private JTextField txtApellido2;
+    private JPasswordField txtPassword;
+    private JTextField txtTelefono;
+    private JTextField txtCorreo;
+    private JButton btnSubir;
     private JButton btnRegistrar;
     private JButton btnLimpiar;
-    private JComboBox comboBox1;
-    private JTextField textField1;
-    private JTextField textField2;
-    private JTextField textField3;
-    private JTextField textField4;
-    private JTextField textField5;
-    private JPasswordField passwordField1;
-    private JTextField textField6;
-    private JTextField textField7;
-    private JButton btnSubir;
-    private JPanel panelPrincipal;
-    private JLabel txtTipoId;
-    private JLabel txt;
-    private JLabel txtNumDoc;
-    private JLabel txtNombre1;
-    private JLabel txtNombre2;
-    private JLabel txtApellido2;
-    private JLabel txtApellido1;
-    private JLabel txtPasswor;
-    private JLabel txtTelefono;
-    private JLabel txtCorreo;
 
     private String rutaFoto = "";
 
@@ -37,7 +27,7 @@ public class CrearUsuario extends JFrame{
         setContentPane(panelPrincipal);
         setTitle("Registro de Usuarios - BookUsers-D1");
         setSize(500, 550);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setLocationRelativeTo(null);
 
         cmbTipoDoc.addItem("Cédula de Ciudadanía (CC)");
@@ -50,7 +40,7 @@ public class CrearUsuario extends JFrame{
         // 2. Botón Subir (Filtro solo PNG y JPG)
         btnSubir.addActionListener(e -> {
             JFileChooser selector = new JFileChooser();
-            FileNameExtensionFilter filtro = new FileNameExtensionFilter("Imágenes (PNG, JPG)", "png", "jpg", "jpeg");
+            FileNameExtensionFilter filtro = new FileNameExtensionFilter("Imágenes (PNG, JPG, JPEG, GIF)", "png", "jpg", "jpeg, GIF");
             selector.setFileFilter(filtro);
             selector.setAcceptAllFileFilterUsed(false);
 
@@ -75,7 +65,7 @@ public class CrearUsuario extends JFrame{
                     txtNombre2.getText(),
                     txtApellido1.getText(),
                     txtApellido2.getText(),
-                    txtPasswor.getText(),
+                    txtPassword.getText(),
                     txtTelefono.getText(),
                     txtCorreo.getText(),
                     rutaFoto
@@ -99,7 +89,7 @@ public class CrearUsuario extends JFrame{
         txtNombre2.setText("");
         txtApellido1.setText("");
         txtApellido2.setText("");
-        txtPasswor.setText("");
+        txtPassword.setText("");
         txtTelefono.setText("");
         txtCorreo.setText("");
         btnSubir.setText("Subir");

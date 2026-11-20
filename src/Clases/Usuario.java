@@ -18,6 +18,26 @@ public class Usuario {
     private String correo;
     private String rutaFoto;
 
+    public Usuario(String tipoIdentificacion, String numeroIdentificacion, String primerNombre,
+                   String segundoNombre, String primerApellido, String segundoApellido,
+                   String password, String telefono, String correo, String rutaFoto) {
+        this.id = contadorId++;
+        this.tipoIdentificacion = tipoIdentificacion;
+        this.numeroIdentificacion = numeroIdentificacion;
+        this.primerNombre = primerNombre;
+        this.segundoNombre = segundoNombre;
+        this.primerApellido = primerApellido;
+        this.segundoApellido = segundoApellido;
+        this.password = password;
+        this.telefono = telefono;
+        this.correo = correo;
+        this.rutaFoto = rutaFoto;
+
+        String ini1 = primerApellido.isEmpty() ? "" : primerApellido.substring(0, 1);
+        String ini2 = segundoApellido.isEmpty() ? "" : segundoApellido.substring(0, 1);
+        this.username = (ini1 + ini2 + primerNombre).toLowerCase();
+    }
+
     public int getId() {
         return id;
     }
@@ -25,7 +45,9 @@ public class Usuario {
     public void setId(int id) {
         this.id = id;
     }
-
+    public String getIdFormateado() {
+        return String.format("%03d", this.id);
+    }
     public String getTipoIdentificacion() {
         return tipoIdentificacion;
     }
