@@ -37,7 +37,7 @@ public class CrearUsuario extends JFrame{
         cmbTipoDoc.addItem("Pasaporte (PA)");
         cmbTipoDoc.addItem("Permiso por Protección Temporal (PPT)");
 
-        // 2. Botón Subir (Filtro solo PNG y JPG)
+        // 2. Botón Subir (Filtro solo PNG, JPG, JPEG Y GIF)
         btnSubir.addActionListener(e -> {
             JFileChooser selector = new JFileChooser();
             FileNameExtensionFilter filtro = new FileNameExtensionFilter("Imágenes (PNG, JPG, JPEG, GIF)", "png", "jpg", "jpeg, GIF");
@@ -56,6 +56,21 @@ public class CrearUsuario extends JFrame{
             if (txtNumDoc.getText().isEmpty() || txtNombre1.getText().isEmpty() || txtApellido1.getText().isEmpty()) {
                 JOptionPane.showMessageDialog(this, "Completa al menos Documento, Primer Nombre y Primer Apellido.");
                 return;
+            }
+
+            // Validar que el número de documento no esté repetido
+            String numDocIngresado = txtNumDoc.getText().trim();
+            for (Usuario u : Usuario.listaUsuarios) {
+                if (u.getNumeroIdentificacion().equalsIgnoreCase(numDocIngresado)) {
+                    JOptionPane.showMessageDialog(
+                            this,
+                            "Ya existe un usuario con el número de documento: " + numDocIngresado,
+                            "Documento duplicado",
+                            JOptionPane.WARNING_MESSAGE
+                    );
+                    txtNumDoc.requestFocus();
+                    return;
+                }
             }
 
             Usuario nuevo = new Usuario(
